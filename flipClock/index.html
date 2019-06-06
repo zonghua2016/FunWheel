@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>flipclock</title>
+    <link rel="stylesheet" href="./flipclock.css" />
+  </head>
+  <body>
+    <!-- <div class="clock1"></div> -->
+    <!-- ======================== -->
+    <div class="ui3g-content">
+      <div class="clock" style="margin:2em;"></div>
+
+      <button
+        type="button"
+        class="increment"
+        style="margin: 25px; font-size: 20px; padding: 15px;"
+      >
+        +1
+      </button>
+
+      <button
+        type="button"
+        class="decrement"
+        style="margin: 25px; font-size: 20px; padding: 15px;"
+      >
+        -1
+      </button>
+
+      <button
+        type="button"
+        class="reset"
+        style="margin: 25px; font-size: 20px; padding: 15px;"
+      >
+        Reset
+      </button>
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="./flipclock.js"></script>
+    <script>
+      var clock;
+      $(document).ready(function() {
+        var clock1;
+
+        // clock1 = $(".clock1").FlipClock({
+        //   clockFace: "DailyCounter",
+        //   autoStart: false,
+        //   callbacks: {
+        //     stop: function() {
+        //       $(".message").html("The clock has stopped!");
+        //     }
+        //   }
+        // });
+
+        // clock1.setTime(220880);
+        // clock1.setCountdown(true);
+        // clock1.start();
+        // ===============
+        var clock = new FlipClock($(".clock"), 10, {
+          clockFace: "Counter"
+        });
+
+        // Attach a click event to a button a increment the clock
+        $(".increment").click(function() {
+          //clock.setValue(10);
+
+          // Or you could decrease the clock
+          // clock.decrement();
+
+          clock.increment();
+
+          // Or set it to a specific value
+          // clock.setValue(x);
+        });
+
+        // Attach a click event to a button a decrement the clock
+        $(".decrement").click(function() {
+          clock.decrement();
+        });
+
+        $(".reset").click(function() {
+          clock.reset();
+        });
+      });
+    </script>
+    <script>
+      var Book = {};
+      var name = "";
+      var arr = [];
+      Object.defineProperty(arr, "", {
+        set(val) {
+          name = val;
+          console.log(`set name===${val}`);
+        },
+        get() {
+          return `<${name}>`;
+        }
+      });
+      // Book.name = "abcdef";
+      // console.log(Book.name);
+    </script>
+    <script>
+      console.log("golb1");
+
+      setTimeout(function() {
+        console.log("timeout1");
+        process.nextTick(function() {
+          console.log("timeout1_nextTick");
+        });
+        new Promise(function(resolve) {
+          console.log("timeout1_promise");
+          resolve();
+        }).then(function() {
+          console.log("timeout1_then");
+        });
+      });
+
+      setImmediate(function() {
+        console.log("immediate1");
+        process.nextTick(function() {
+          console.log("immediate1_nextTick");
+        });
+        new Promise(function(resolve) {
+          console.log("immediate1_promise");
+          resolve();
+        }).then(function() {
+          console.log("immediate1_then");
+        });
+      });
+
+      process.nextTick(function() {
+        console.log("glob1_nextTick");
+      });
+      new Promise(function(resolve) {
+        console.log("glob1_promise");
+        resolve();
+      }).then(function() {
+        console.log("glob1_then");
+      });
+
+      setTimeout(function() {
+        console.log("timeout2");
+        process.nextTick(function() {
+          console.log("timeout2_nextTick");
+        });
+        new Promise(function(resolve) {
+          console.log("timeout2_promise");
+          resolve();
+        }).then(function() {
+          console.log("timeout2_then");
+        });
+      });
+
+      process.nextTick(function() {
+        console.log("glob2_nextTick");
+      });
+      new Promise(function(resolve) {
+        console.log("glob2_promise");
+        resolve();
+      }).then(function() {
+        console.log("glob2_then");
+      });
+
+      setImmediate(function() {
+        console.log("immediate2");
+        process.nextTick(function() {
+          console.log("immediate2_nextTick");
+        });
+        new Promise(function(resolve) {
+          console.log("immediate2_promise");
+          resolve();
+        }).then(function() {
+          console.log("immediate2_then");
+        });
+      });
+    </script>
+    <script>
+      let Per = {
+        log() {
+          console.log("aaa");
+        }
+      };
+      function myNew(obj = {}) {
+        let newobj = Object.create(obj);
+        return newobj;
+      }
+      console.log(myNew(null));
+    </script>
+  </body>
+</html>
